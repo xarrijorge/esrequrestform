@@ -1,0 +1,28 @@
+.App {
+    text-align: center;
+}
+.mainForm {
+    display: flex;
+    flex-direction: column;
+    width: 920px;
+    /* background-color: grey; */
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5vh;
+}
+
+.greeting {
+    text-align: center;
+}
+.inputdiv {
+    margin: 25px 0;
+    width: 300px;
+}
+input[type='text'] {
+    width: 100%;
+}
+
+.inputdiv.radioset {
+    display: flex;
+    align-items: center;
+}
