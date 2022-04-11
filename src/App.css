@@ -1,6 +1,37 @@
 .App {
     text-align: center;
 }
+.homepage {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: goldenrod;
+    background-color: #3325ee;
+}
+.homeinput {
+    width: 400px;
+    height: 35px;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+.homeinput:focus {
+}
+.homebutton {
+    background-color: goldenrod;
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
 .mainForm {
     display: flex;
     flex-direction: column;

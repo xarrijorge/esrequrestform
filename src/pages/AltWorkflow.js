@@ -26,7 +26,7 @@ const ESForms = () => {
         event.preventDefault()
         setInputVal(event.target.value)
         if (
-            inputVal.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) &&
+            inputVal.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g) &&
             inputVal.includes('easysolar')
         ) {
             setButtonDisabled(false)
