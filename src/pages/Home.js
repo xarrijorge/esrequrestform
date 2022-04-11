@@ -19,13 +19,14 @@ export default function Home({
                     placeholder='firstname.lastname@easysolar.org'
                 />
             </div>
-            <button
+            <Button
                 className='homebutton'
                 disabled={buttonDisabled}
+                variant='contained'
                 onClick={handleClick}>
                 {/* <Link to='/MainForm'>Next</Link> */}
                 Next
-            </button>
+            </Button>
         </form>
     )
 }
