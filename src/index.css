@@ -4,11 +4,15 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    width: 98vw;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
+    background-color: #ecf0f1;
 }
 
 code {

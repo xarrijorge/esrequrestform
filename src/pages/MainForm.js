@@ -18,11 +18,12 @@ const MainForm = (props) => {
     const [formData, setFormData] = React.useState({})
     const [dateValue, setDateValue] = React.useState(null)
     const [data, setData] = React.useState({})
-    const [claim, setClaim] = React.useState(1000)
+    const [claim, setClaim] = React.useState(0)
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post('/user', {
+        // e.preventDefault()
+        axios
+            .post('/user', {
                 firstName: 'Fred',
                 lastName: 'Flintstone',
             })
@@ -68,7 +69,7 @@ const MainForm = (props) => {
     return (
         <Fragment>
             <h2 className='greeting'>
-                Welcome {props.data[0].FirstName} Please Fill out the details
+                Welcome, {props.data[0].FirstName}. Please Fill out the details
                 below
             </h2>
             <form className='mainForm' onSubmit={handleSubmit}>
@@ -83,6 +84,7 @@ const MainForm = (props) => {
                         <TextField
                             label='Destination'
                             name='destination'
+                            required
                             InputProps={{
                                 readOnly: false,
                             }}
@@ -93,6 +95,7 @@ const MainForm = (props) => {
                     <div className='inputdiv'>
                         <TextField
                             label='Number of Nights'
+                            required
                             name='nights'
                             type='number'
                             InputProps={{
@@ -105,6 +108,7 @@ const MainForm = (props) => {
                     <div className='inputdiv'>
                         <TextField
                             label='Number of Days'
+                            required
                             name='days'
                             type='number'
                             InputProps={{
@@ -191,9 +195,11 @@ const MainForm = (props) => {
                             <Select
                                 labelId='demo-simple-select-label'
                                 id='demo-simple-select'
-                                value={formData.age}
+                                value={formData.vehicle}
+                                defaultValue='any'
                                 label='Type of Vehicle'
                                 name='vehicle'
+                                required
                                 onChange={handleChange}>
                                 <MenuItem value='4x4'>
                                     4x4 Land Cruiser
@@ -221,6 +227,7 @@ const MainForm = (props) => {
                         <RadioGroup
                             aria-labelledby='purpose-group-label'
                             defaultValue='No'
+                            required
                             onChange={handleChange}
                             name='purpose'>
                             <FormControlLabel
@@ -317,7 +324,12 @@ const MainForm = (props) => {
                     />
                 </div>
 
-                <Button color='primary' variant='outlined' type='submit'>
+                <Button
+                    color='primary'
+                    variant='outlined'
+                    type='submit'
+                    size='large'
+                    className='submitButton'>
                     Submit
                 </Button>
             </form>
