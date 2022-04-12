@@ -3,24 +3,19 @@ import axios from 'axios'
 import Home from './Home'
 import MainForm from './MainForm'
 
-const API_URI = 'https://shielded-plains-53385.herokuapp.com/users'
-
 const ESForms = () => {
     const [data, setData] = React.useState([])
     const [inputVal, setInputVal] = React.useState('')
     const [buttonDisabled, setButtonDisabled] = React.useState(true)
 
+    const API_URI = `https://shielded-plains-53385.herokuapp.com/users?email=${inputVal}`
+
     const GetData = async () => {
+        console.log(API_URI)
         await axios
             .get(API_URI)
             .then((res) => res.data)
-            .then((data) =>
-                setData(
-                    data.filter(
-                        (person) => person.EmployeeEmailAddress === inputVal
-                    )
-                )
-            )
+            .then((data) => setData([data]))
     }
     const handleInputChange = (event) => {
         event.preventDefault()

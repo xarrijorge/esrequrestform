@@ -20,21 +20,6 @@ const MainForm = (props) => {
     const [data, setData] = React.useState({})
     const [claim, setClaim] = React.useState(0)
 
-    const handleSubmit = (e) => {
-        // e.preventDefault()
-        axios
-            .post('/user', {
-                firstName: 'Fred',
-                lastName: 'Flintstone',
-            })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-        console.log(formData)
-    }
     const calculateClaim = () => {
         const nights =
             formData.nights !== 'No' ? parseInt(formData.nights) : null
@@ -54,23 +39,37 @@ const MainForm = (props) => {
         setFormData({
             ...props.data,
             ...formData,
-            email: data[0].EmployeeEmailAddress,
+            email: data[0]['Employee Email Address'],
             [e.target.name]: e.target.value.trim(),
         })
     }
+    const API_URI = 'https://shielded-plains-53385.herokuapp.com/requests'
 
     // console.log(formik.values)
+    const handleSubmit = async () => {
+        // e.preventDefault()
+        await axios
+            .post(
+                API_URI,
+                JSON.stringify({ name: 'muctarr', work: 'easy solar' })
+            )
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
     React.useEffect(() => {
         setData(props.data)
-        console.log(data, props.data)
     }, [props.data, data])
 
     return (
         <Fragment>
             <h2 className='greeting'>
-                Welcome, {props.data[0].FirstName}. Please Fill out the details
-                below
+                Welcome, {props.data[0]['First Name']}. Please Fill out the
+                details below
             </h2>
             <form className='mainForm' onSubmit={handleSubmit}>
                 <div>
@@ -100,6 +99,8 @@ const MainForm = (props) => {
                             type='number'
                             InputProps={{
                                 readOnly: false,
+                                min: 0,
+                                max: 10,
                             }}
                             variant='outlined'
                             onChange={handleChange}
@@ -113,6 +114,8 @@ const MainForm = (props) => {
                             type='number'
                             InputProps={{
                                 readOnly: false,
+                                min: 0,
+                                max: 10,
                             }}
                             variant='outlined'
                             onChange={handleChange}
@@ -278,6 +281,8 @@ const MainForm = (props) => {
                                 type='number'
                                 InputProps={{
                                     readOnly: false,
+                                    min: 0,
+                                    max: 10,
                                 }}
                                 variant='outlined'
                                 onChange={handleChange}
