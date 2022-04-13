@@ -45,12 +45,13 @@ const MainForm = (props) => {
     }
     const API_URI = 'https://shielded-plains-53385.herokuapp.com/requests'
     // const API_URI = 'http://localhost:3001/requests'
+    const headers = { 'content-type': 'application/json' }
 
     // console.log(formik.values)
     const handleSubmit = async (e) => {
         e.preventDefault()
         await axios
-            .post(API_URI, JSON.stringify(formData))
+            .post(API_URI, formData, headers)
             .then((response) => {
                 console.log(response)
             })
