@@ -20,10 +20,7 @@ const ESForms = () => {
     const handleInputChange = (event) => {
         event.preventDefault()
         setInputVal(event.target.value)
-        if (
-            inputVal.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g) &&
-            inputVal.includes('easysolar')
-        ) {
+        if (inputVal.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,3}$/gi)) {
             setButtonDisabled(false)
         } else {
             setButtonDisabled(true)
@@ -31,8 +28,10 @@ const ESForms = () => {
     }
 
     React.useEffect(() => {
-        console.log(data)
-    }, [data])
+        inputVal.match(/[a-z.]+@[slib.]{0,4}?[easysolar]+\.[org]{3}/g)
+            ? setButtonDisabled(false)
+            : setButtonDisabled(true)
+    }, [inputVal])
 
     return (
         <>
