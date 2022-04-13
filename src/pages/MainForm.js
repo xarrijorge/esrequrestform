@@ -37,22 +37,20 @@ const MainForm = (props) => {
     const handleChange = (e) => {
         e.preventDefault()
         setFormData({
-            ...props.data,
             ...formData,
-            email: data[0]['Employee Email Address'],
             [e.target.name]: e.target.value.trim(),
+            TOTALCLAIM: claim,
         })
+        console.log(formData)
     }
     const API_URI = 'https://shielded-plains-53385.herokuapp.com/requests'
+    // const API_URI = 'http://localhost:3001/requests'
 
     // console.log(formik.values)
-    const handleSubmit = async () => {
-        // e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         await axios
-            .post(
-                API_URI,
-                JSON.stringify({ name: 'muctarr', work: 'easy solar' })
-            )
+            .post(API_URI, JSON.stringify(formData))
             .then((response) => {
                 console.log(response)
             })
