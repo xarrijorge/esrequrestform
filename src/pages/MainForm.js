@@ -33,13 +33,13 @@ const MainForm = (props) => {
         const TOTALCLAIM = mealVal + accVal
 
         setClaim(TOTALCLAIM)
+        setFormData({ ...formData, TOTALCLAIM: TOTALCLAIM })
     }
     const handleChange = (e) => {
         e.preventDefault()
         setFormData({
             ...formData,
             [e.target.name]: e.target.value.trim(),
-            TOTALCLAIM: claim,
         })
         console.log(formData)
     }
@@ -50,6 +50,11 @@ const MainForm = (props) => {
     // console.log(formik.values)
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+            totalclaim: claim,
+        })
         await axios
             .post(API_URI, formData, headers)
             .then((response) => {
@@ -62,6 +67,7 @@ const MainForm = (props) => {
 
     React.useEffect(() => {
         setData(props.data)
+        console.log(data)
     }, [props.data, data])
 
     return (
