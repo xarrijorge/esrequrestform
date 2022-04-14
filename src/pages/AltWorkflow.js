@@ -8,7 +8,7 @@ const ESForms = () => {
     const [inputVal, setInputVal] = React.useState('')
     const [buttonDisabled, setButtonDisabled] = React.useState(true)
 
-    const API_URI = `https://shielded-plains-53385.herokuapp.com/users?email=${inputVal}`
+    const API_URI = `https://esformsbackend.herokuapp.com/users?email=${inputVal}`
 
     const GetData = async () => {
         console.log(API_URI)
