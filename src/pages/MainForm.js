@@ -49,7 +49,6 @@ const MainForm = (props) => {
 
     // console.log(formik.values)
     const handleSubmit = async (e) => {
-        e.preventDefault()
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
