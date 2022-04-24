@@ -25,10 +25,9 @@ const MainForm = (props) => {
             formData.nights !== 'No' ? parseInt(formData.nights) : null
         const days = formData.days !== 'No' ? parseInt(formData.days) : null
 
-        const mealVal =
-            parseInt(data[0].Meals.replace(/[^a-z0-9]/gi, '')) * days
+        const mealVal = parseInt(data.Meals.replace(/[^a-z0-9]/gi, '')) * days
         const accVal =
-            parseInt(data[0].Accommodation.replace(/[^a-z0-9]/gi, '')) * nights
+            parseInt(data.Accommodation.replace(/[^a-z0-9]/gi, '')) * nights
 
         const TOTALCLAIM = mealVal + accVal
 
@@ -66,14 +65,13 @@ const MainForm = (props) => {
 
     React.useEffect(() => {
         setData(props.data)
-        console.log(data)
     }, [props.data, data])
 
     return (
         <Fragment>
             <h2 className='greeting'>
-                Welcome, {props.data[0]['First Name']}. Please Fill out the
-                details below
+                Welcome, {props.data['First Name']}. Please Fill out the details
+                below
             </h2>
             <form className='mainForm' onSubmit={handleSubmit}>
                 <div>
